@@ -25,7 +25,7 @@ struct Atomicity4_0App: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarHome()
         }
         .modelContainer(sharedModelContainer)
     }
