@@ -10,19 +10,23 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-    
+    @Query private var items: [Objective]
+    @State private var createNewObjective: Bool = false
     var body: some View {
         NavigationSplitView {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        Text("Objective at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
                     } label: {
                         Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
                     }
                 }
                 .onDelete(perform: deleteItems)
+            }
+            .sheet(isPresented: $createNewObjective) {
+                AddObjectiveScreen()
+                    .presentationDetents([.large])
             }
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
@@ -53,6 +57,7 @@ struct ContentView: View {
 #endif
                 ToolbarItem {
                     Button {
+                        createNewObjective = true
                         HapticManager.notification(type: .success)
                     } label: {
                         ZStack{
@@ -78,7 +83,7 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
+            let newItem = Objective(objectiveTitle: "", remarks: "", isCompleted: false, tint: "taskColor1", timestamp: Date.now)
             modelContext.insert(newItem)
         }
     }
@@ -94,5 +99,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Objective.self, inMemory: true)
 }

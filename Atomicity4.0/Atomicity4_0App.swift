@@ -12,7 +12,7 @@ import SwiftData
 struct Atomicity4_0App: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Objective.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -26,6 +26,7 @@ struct Atomicity4_0App: App {
     var body: some Scene {
         WindowGroup {
             TabBarHome()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .modelContainer(sharedModelContainer)
     }

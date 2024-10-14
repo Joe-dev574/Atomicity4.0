@@ -35,15 +35,14 @@ struct TabBarHome: View {
                     // .toolbar(.hidden, for: .tabBar)
                     
                     Button(action: {
+                        
                         HapticManager.notification(type: .success)
                     }, label: {
                         Image(systemName: "plus")
                             .imageScale(.large)
                             .foregroundStyle(.primary)
                             .background(.gray)
-                        
                     })
-                    
                     Text("GrindView()")
                         .tag(Tab.objectives)
                     /// Hiding Native Tab Bar
@@ -54,11 +53,8 @@ struct TabBarHome: View {
                     /// Hiding Native Tab Bar
                     /// Bug on iOS 16.4
                     // .toolbar(.hidden, for: .tabBar)
-                    
                 }
-                
                 CustomTabBar()
-                
             }
          
         }
@@ -67,7 +63,7 @@ struct TabBarHome: View {
         /// With More Easy Customization
         @ViewBuilder
         func CustomTabBar(_ tint: Color = .blue, _ inactiveTint: Color = .gray) -> some View {
-            /// Moving all the Remaining Tab Item's to Bottom
+            /// Moving all the Remaining Tab Objective's to Bottom
             HStack(alignment: .bottom, spacing: 40) {
                 ForEach(Tab.allCases, id: \.rawValue) {
                     TabItem(
@@ -97,7 +93,7 @@ struct TabBarHome: View {
         }
     }
     
-    /// Tab Bar Item
+    /// Tab Bar Objective
     struct TabItem: View {
         var tint: Color
         var inactiveTint: Color
@@ -106,7 +102,7 @@ struct TabBarHome: View {
         @Binding var activeTab: Tab
         @Binding var position: CGPoint
         
-        /// Each Tab Item Position on the Screen
+        /// Each Tab Objective Position on the Screen
         @State private var tabPosition: CGPoint = .zero
         var body: some View {
             VStack(spacing: 2) {
