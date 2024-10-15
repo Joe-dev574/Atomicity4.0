@@ -28,7 +28,7 @@ struct TabBarHome: View {
                     /// Bug on iOS 16.4
                     // .toolbar(.hidden, for: .tabBar)
                     
-                    ContentView()
+                    HomeView()
                         .tag(Tab.projects)
                     /// Hiding Native Tab Bar
                     /// Bug on iOS 16.4

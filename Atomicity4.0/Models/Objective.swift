@@ -15,20 +15,20 @@ final class Objective: Identifiable {
     var remarks: String
     var isCompleted: Bool = false
     var tint: String
-    var timestamp: Date
+    var creationDate: Date
     
     init(
         objectiveTitle: String,
         remarks: String,
         isCompleted: Bool,
         tint: String,
-        timestamp: Date
+        creationDate: Date
     ) {
         self.objectiveTitle = objectiveTitle
         self.remarks = remarks
         self.isCompleted = isCompleted
         self.tint = tint
-        self.timestamp = timestamp
+        self.creationDate = creationDate
     }
     var tintColor: Color {
         switch tint {
@@ -54,7 +54,15 @@ final class Objective: Identifiable {
             case "taskColor20": return .taskColor20
             case "taskColor21": return .taskColor21
             case "taskColor22": return .taskColor22
-            default: return .taskColor1
+            case "taskColor23": return .taskColor23
+            case "taskColor24": return .taskColor24
+            case "taskColor25": return .taskColor25
+            case "taskColor26": return .taskColor26
+            case "taskColor27": return .taskColor27
+            case "taskColor28": return .taskColor28
+            case "taskColor29": return .taskColor29
+            case "taskColor30": return .taskColor30
+        default: return .primary
             
         }
     }
@@ -62,19 +70,19 @@ final class Objective: Identifiable {
 
     var sampleObjectives: [Objective] {
         [
-            .init(objectiveTitle: "WRMG Weld Maps Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor2", timestamp: Date.now),
-            .init(objectiveTitle: "Weld Tactics Blog Site Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor3", timestamp: Date.now),
-            .init(objectiveTitle: "WRMG Weld Maps Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor6", timestamp: Date.now),
-            .init(objectiveTitle: "Weld Tactics Blog Site Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor7", timestamp: Date.now),
-            .init(objectiveTitle: "Update Room.   Make Modern and Enhance", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor3", timestamp: Date.now),
-            .init(objectiveTitle: "Develop Workout Routine for 3 Month Cycle", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor12", timestamp: Date.now),
+            .init(objectiveTitle: "WRMG Weld Maps Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor2", creationDate: Date.distantFuture),
+            .init(objectiveTitle: "Weld Tactics Blog Site Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor3", creationDate: Date.distantFuture),
+            .init(objectiveTitle: "WRMG Weld Maps Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor6", creationDate: Date.distantFuture),
+            .init(objectiveTitle: "Weld Tactics Blog Site Initiative", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor7", creationDate: Date.distantFuture),
+            .init(objectiveTitle: "Update Room.   Make Modern and Enhance", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor3", creationDate: Date.distantFuture),
+            .init(objectiveTitle: "Develop Workout Routine for 3 Month Cycle", remarks: "Lorem ipsum odor amet, consectetuer adipiscing elit. Rutrum ridiculus at et quis primis mattis.", isCompleted: false, tint: "taskColor12", creationDate: Date.distantFuture),
         ]
     }
 }
         extension Date{
             static func updateHour(_ value: Int) -> Date{
-                let calendar = Calendar.current
-                return Calendar.current.date(byAdding: .hour, value: value, to: .now)!
+               let calendar = Calendar.current
+                return calendar.date(byAdding: .hour, value: value, to: .init()) ?? .init()
             }
         }
     
