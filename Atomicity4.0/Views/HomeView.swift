@@ -145,12 +145,11 @@ struct HomeView: View {
                                     .fill(.darkBlue)
                                     .matchedGeometryEffect(id: "TABINDICATOR", in: animation)
                             }
-                            
                             /// Indicator to Show, Which is Today;s Date
                             if day.date.isToday {
                                 RoundedRectangle(cornerRadius: 2)
                                     .fill(.green)
-                                    .frame(width: 5, height: 10)
+                                    .frame(width: 5, height: 13)
                                     .vSpacing(.bottom)
                                     .offset(y: 12)
                             }
